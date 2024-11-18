@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:horoscope/view/daily_horoscope_screen.dart';
+import 'package:horoscope/view/monthly_horocope_screen.dart';
 import 'package:horoscope/view/weekly_horoscope_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -24,7 +25,7 @@ class NavigationScreen extends StatelessWidget {
     return [
       const DailyHoroscopeScreen(),
       const WeeklyHoroscopeScreen(),
-      const NewStoriesScreen(),
+      const MonthlyHorocopeScreen(),
     ];
   }
 
@@ -33,8 +34,8 @@ class NavigationScreen extends StatelessWidget {
       PersistentBottomNavBarItem(
         title: "Daily",
         icon: const Icon(Icons.trending_up),
-        activeColorPrimary: Colors.white, 
-        inactiveColorPrimary: Colors.grey, 
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         title: "Weekly",
