@@ -1,6 +1,4 @@
 
-
-
 class WeeklyHoroscope {
     Data? data;
     int ?status;

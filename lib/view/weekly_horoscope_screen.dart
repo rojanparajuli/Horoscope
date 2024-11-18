@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/daily_horoscope_bloc.dart';
-import '../bloc/daily_hrorscope_state.dart';
+import 'package:horoscope/bloc/weekly_horoscope_bloc.dart';
+import 'package:horoscope/bloc/weekly_horoscope_state.dart';
 
 const zodiacSigns = [
   {
@@ -34,16 +34,16 @@ const zodiacSigns = [
   {"sign": "Pisces", "icon": Icons.pool, "color": Colors.lightBlueAccent},
 ];
 
-class DailyHoroscopeScreen extends StatelessWidget {
-  const DailyHoroscopeScreen({super.key});
+class WeeklyHoroscopeScreen extends StatelessWidget {
+  const WeeklyHoroscopeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DailyHoroscopeBloc, DailyHoroscopeState>(
+    return BlocBuilder<WeeklyHoroscopeBloc, WeeklyHoroscopeState>(
       builder: (context, state) {
-        if (state is DailyHoroscopeLoading) {
+        if (state is WeeklyHoroscopeLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is DailyHoroscopeLoaded) {
+        } else if (state is WeeklyHoroscopeLoaded) {
           return ListView.builder(
             itemCount: state.horoscopes.length,
             itemBuilder: (context, index) {
@@ -82,7 +82,7 @@ class DailyHoroscopeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        horoscope.data?.date ?? "Unknown Date",
+                        horoscope.data?.week ?? "Unknown Date",
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.white60,
@@ -94,7 +94,7 @@ class DailyHoroscopeScreen extends StatelessWidget {
               );
             },
           );
-        } else if (state is DailyHoroscopeError) {
+        } else if (state is WeeklyHoroscopeError) {
           return Center(child: Text("Error: ${state.message}"));
         }
         return const Center(child: Text("No horoscopes available."));
