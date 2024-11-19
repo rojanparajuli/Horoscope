@@ -114,6 +114,7 @@ class DailyHoroscopeScreen extends StatelessWidget {
                             final signData = zodiacSigns[index % zodiacSigns.length];
 
                             return Card(
+                              color: Colors.white,
                               margin: const EdgeInsets.symmetric(vertical: 12),
                               elevation: 5,
                               shape: RoundedRectangleBorder(

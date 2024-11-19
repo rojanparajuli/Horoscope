@@ -60,9 +60,9 @@ class MonthlyHoroscopeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Stack(
         children: [
-          // Background GIF
           Positioned.fill(
             child: Image.asset(
               'assets/background.gif',
@@ -70,22 +70,21 @@ class MonthlyHoroscopeScreen extends StatelessWidget {
               alignment: Alignment.center,
             ),
           ),
-          // Content with a semi-transparent overlay for better readability
           Container(
             color: Colors.black.withOpacity(0.6),
             child: BlocBuilder<MonthlyHoroscopeBloc, MonthlyHoroscopeState>(
               builder: (context, state) {
                 return CustomScrollView(
                   slivers: [
-                    SliverAppBar(
+                    const SliverAppBar(
                       backgroundColor: Colors.transparent,
                       expandedHeight: 100,
                       flexibleSpace: FlexibleSpaceBar(
-                        title: const Text(
+                        title: Text(
                           'Monthly Horoscope',
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15
                           ),
                         ),
                         centerTitle: true,
