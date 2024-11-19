@@ -25,7 +25,7 @@ class NavigationScreen extends StatelessWidget {
     return [
       const DailyHoroscopeScreen(),
       const WeeklyHoroscopeScreen(),
-      const MonthlyHorocopeScreen(),
+      const MonthlyHoroscopeScreen(),
     ];
   }
 
