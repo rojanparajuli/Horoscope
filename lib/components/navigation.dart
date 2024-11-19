@@ -13,11 +13,19 @@ class NavigationScreen extends StatelessWidget {
       context,
       screens: _buildScreens(),
       items: _navBarsItems(),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.transparent, // Transparent background for nav bar
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
-      navBarStyle: NavBarStyle.style3,
+      navBarStyle: NavBarStyle.style6, // Style with minimal background
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        colorBehindNavBar: Colors.transparent,
+      ),
+      // Additional customization for opacity and shadow removal
+      navBarHeight: kBottomNavigationBarHeight,
+      bottomScreenMargin: 0,
+      margin: EdgeInsets.zero,
     );
   }
 
@@ -33,21 +41,33 @@ class NavigationScreen extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         title: "Daily",
-        icon: const Icon(Icons.trending_up),
-        activeColorPrimary: Colors.white,
-        inactiveColorPrimary: Colors.grey,
+        icon: const Icon(Icons.wb_sunny),
+        activeColorPrimary: Colors.green,
+        inactiveColorPrimary: Colors.black,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Roboto',
+        ),
       ),
       PersistentBottomNavBarItem(
         title: "Weekly",
-        icon: const Icon(Icons.star),
-        activeColorPrimary: Colors.white,
-        inactiveColorPrimary: Colors.grey,
+        icon: const Icon(Icons.calendar_today),
+        activeColorPrimary: Colors.green,
+        inactiveColorPrimary: Colors.black,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Roboto',
+        ),
       ),
       PersistentBottomNavBarItem(
         title: "Monthly",
-        icon: const Icon(Icons.fiber_new),
-        activeColorPrimary: Colors.white,
-        inactiveColorPrimary: Colors.grey,
+        icon: const Icon(Icons.calendar_month),
+        activeColorPrimary: Colors.green,
+        inactiveColorPrimary: Colors.black,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Roboto',
+        ),
       ),
     ];
   }
