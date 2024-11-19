@@ -1,4 +1,3 @@
-
 class DailyHoroscope {
   Data? data;
   int? status;
@@ -42,7 +41,3 @@ class Data {
         "horoscope_data": horoscopeData,
       };
 }
-
-
-
-
