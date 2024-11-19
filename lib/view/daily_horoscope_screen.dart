@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoscope/bloc/daily_hrorscope_state.dart';
+import 'package:lottie/lottie.dart';
 import '../bloc/daily_horoscope_bloc.dart';
 
 final zodiacSigns = [
@@ -97,10 +98,11 @@ class DailyHoroscopeScreen extends StatelessWidget {
                   child: BlocBuilder<DailyHoroscopeBloc, DailyHoroscopeState>(
                     builder: (context, state) {
                       if (state is DailyHoroscopeLoading) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
+                        return  Center(
+                          child: SizedBox(
+                            height: 200,
+                            width: 200,
+                            child: Lottie.asset('assets/loading.json')),
                         );
                       } else if (state is DailyHoroscopeLoaded) {
                         return ListView.builder(
