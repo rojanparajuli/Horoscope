@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import '../bloc/monthly_horoscope_bloc.dart';
 import '../bloc/monthly_horoscope_state.dart';
 
@@ -91,12 +92,19 @@ class MonthlyHoroscopeScreen extends StatelessWidget {
                       ),
                     ),
                     if (state is MonthlyHoroscopeLoading) ...[
-                      const SliverFillRemaining(
+                       SliverFillRemaining(
                         child: Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        ),
+                          child: SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: Lottie.asset(
+                                'assets/animation.json',
+                                fit: BoxFit.contain,
+                                repeat: true,
+                                width: 200,
+                                height: 200,
+                              )),
+                        )
                       ),
                     ] else if (state is MonthlyHoroscopeLoaded) ...[
                       SliverList(

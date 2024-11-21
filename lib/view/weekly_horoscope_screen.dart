@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import '../bloc/weekly_horoscope_bloc.dart';
 import '../bloc/weekly_horoscope_state.dart';
 
@@ -87,18 +88,31 @@ class WeeklyHoroscopeScreen extends StatelessWidget {
                   child: BlocBuilder<WeeklyHoroscopeBloc, WeeklyHoroscopeState>(
                     builder: (context, state) {
                       if (state is WeeklyHoroscopeLoading) {
-                        return const Center(child: CircularProgressIndicator(color: Colors.white));
+                        return Center(
+                                                  child: SizedBox(
+                          height: 200,
+                          width: 200,
+                          child: Lottie.asset(
+                            'assets/animation.json',
+                            fit: BoxFit.contain,
+                            repeat: true,
+                            width: 200,
+                            height: 200,
+                          )),
+                                                );
                       } else if (state is WeeklyHoroscopeLoaded) {
                         return ListView.builder(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           itemCount: state.horoscopes.length,
                           itemBuilder: (context, index) {
                             final horoscope = state.horoscopes[index];
-                            final signData = zodiacSigns[index % zodiacSigns.length];
+                            final signData =
+                                zodiacSigns[index % zodiacSigns.length];
 
                             return Card(
                               color: Colors.white,
-                              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
@@ -108,7 +122,8 @@ class WeeklyHoroscopeScreen extends StatelessWidget {
                                     height: 100,
                                     width: 100,
                                     decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.white, width: 2),
+                                      border: Border.all(
+                                          color: Colors.white, width: 2),
                                     ),
                                     child: signData['image'] as Image,
                                   ),
@@ -116,7 +131,8 @@ class WeeklyHoroscopeScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             signData['sign'] as String,
@@ -128,7 +144,8 @@ class WeeklyHoroscopeScreen extends StatelessWidget {
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
-                                            horoscope.data?.horoscopeData ?? "No data available",
+                                            horoscope.data?.horoscopeData ??
+                                                "No data available",
                                             style: const TextStyle(
                                               fontSize: 16,
                                               color: Colors.black,
@@ -136,7 +153,8 @@ class WeeklyHoroscopeScreen extends StatelessWidget {
                                           ),
                                           const SizedBox(height: 4),
                                           Text(
-                                            horoscope.data?.week ?? "Unknown Date",
+                                            horoscope.data?.week ??
+                                                "Unknown Date",
                                             style: const TextStyle(
                                               fontSize: 14,
                                               color: Colors.black,
@@ -162,8 +180,7 @@ class WeeklyHoroscopeScreen extends StatelessWidget {
                       return const Center(
                         child: Text(
                           "No horoscopes available.",
-                          style: TextStyle(color: Colors.black
-                          ),
+                          style: TextStyle(color: Colors.black),
                         ),
                       );
                     },
