@@ -98,11 +98,17 @@ class DailyHoroscopeScreen extends StatelessWidget {
                   child: BlocBuilder<DailyHoroscopeBloc, DailyHoroscopeState>(
                     builder: (context, state) {
                       if (state is DailyHoroscopeLoading) {
-                        return  Center(
+                        return Center(
                           child: SizedBox(
-                            height: 200,
-                            width: 200,
-                            child: Lottie.asset('assets/loading.json')),
+                              height: 200,
+                              width: 200,
+                              child: Lottie.asset(
+                                'assets/animation.json',
+                                fit: BoxFit.contain,
+                                repeat: true,
+                                width: 200,
+                                height: 200,
+                              )),
                         );
                       } else if (state is DailyHoroscopeLoaded) {
                         return ListView.builder(
@@ -113,7 +119,8 @@ class DailyHoroscopeScreen extends StatelessWidget {
                           itemCount: state.horoscopes.length,
                           itemBuilder: (context, index) {
                             final horoscope = state.horoscopes[index];
-                            final signData = zodiacSigns[index % zodiacSigns.length];
+                            final signData =
+                                zodiacSigns[index % zodiacSigns.length];
 
                             return Card(
                               color: Colors.white,

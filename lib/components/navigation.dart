@@ -13,19 +13,15 @@ class NavigationScreen extends StatelessWidget {
       context,
       screens: _buildScreens(),
       items: _navBarsItems(),
-      backgroundColor: Colors.transparent, // Transparent background for nav bar
+      backgroundColor: Colors.blueGrey[900]!,
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
-      stateManagement: true,
-      navBarStyle: NavBarStyle.style6, // Style with minimal background
+      navBarStyle: NavBarStyle.style1,
+      navBarHeight: 60,
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        colorBehindNavBar: Colors.transparent,
+        borderRadius: BorderRadius.zero,
+        colorBehindNavBar: Colors.blueGrey[900]!,
       ),
-      // Additional customization for opacity and shadow removal
-      navBarHeight: kBottomNavigationBarHeight,
-      bottomScreenMargin: 0,
-      margin: EdgeInsets.zero,
     );
   }
 
@@ -41,32 +37,32 @@ class NavigationScreen extends StatelessWidget {
     return [
       PersistentBottomNavBarItem(
         title: "Daily",
-        icon: const Icon(Icons.wb_sunny),
-        activeColorPrimary: Colors.green,
-        inactiveColorPrimary: Colors.black,
+        icon: const Icon(Icons.wb_sunny_outlined),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.grey,
         textStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
         ),
       ),
       PersistentBottomNavBarItem(
         title: "Weekly",
-        icon: const Icon(Icons.calendar_today),
-        activeColorPrimary: Colors.green,
-        inactiveColorPrimary: Colors.black,
+        icon: const Icon(Icons.calendar_today_outlined),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.grey,
         textStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
         ),
       ),
       PersistentBottomNavBarItem(
         title: "Monthly",
-        icon: const Icon(Icons.calendar_month),
-        activeColorPrimary: Colors.green,
-        inactiveColorPrimary: Colors.black,
+        icon: const Icon(Icons.calendar_month_outlined),
+        activeColorPrimary: Colors.white,
+        inactiveColorPrimary: Colors.grey,
         textStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w500,
+          fontSize: 14,
         ),
       ),
     ];
